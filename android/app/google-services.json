@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "446167274830",
+    "project_id": "fir-c627e",
+    "storage_bucket": "fir-c627e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446167274830:android:09d270a1d76fabf7263a1f",
+        "android_client_info": {
+          "package_name": "com.lds.firstflutterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446167274830-6s1hinnn2slq91sp0erbdqnuj6sv6fcr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMiLM0oV5LeuKZkqaIvBDuLRIKdiqpcNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446167274830-6s1hinnn2slq91sp0erbdqnuj6sv6fcr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
