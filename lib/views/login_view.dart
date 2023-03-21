@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firstflutterapp/main.dart';
+import 'package:firstflutterapp/views/register_view.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,37 +33,47 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          controller: _email,
-          keyboardType: TextInputType.emailAddress,
-          enableSuggestions: false,
-          decoration: const InputDecoration(hintText: "Enter Your Email ID"),
-        ),
-        TextField(
-          controller: _password,
-          decoration: const InputDecoration(hintText: "Enter Your Password"),
-          obscureText: true,
-          enableSuggestions: false,
-          autocorrect: false,
-        ),
-        TextButton(
-          onPressed: () async {
-            final email = _email.text;
-            final password = _password.text;
-            try {
-              final user = await FirebaseAuth.instance
-                  .signInWithEmailAndPassword(email: email, password: password);
-              print(user);
-            } on FirebaseAuthException catch (e) {
-              print(e);
-              if (e.code == 'wrong-password') print("Password is worng");
-            }
-          },
-          child: const Text("Login"),
-        ),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Login"),
+      ),
+      body: Column(
+        children: [
+          TextField(
+            controller: _email,
+            keyboardType: TextInputType.emailAddress,
+            enableSuggestions: false,
+            decoration: const InputDecoration(hintText: "Enter Your Email ID"),
+          ),
+          TextField(
+            controller: _password,
+            decoration: const InputDecoration(hintText: "Enter Your Password"),
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
+          ),
+          TextButton(
+            onPressed: () async {
+              final email = _email.text;
+              final password = _password.text;
+              try {
+                final user = await FirebaseAuth.instance
+                    .signInWithEmailAndPassword(
+                        email: email, password: password);
+              } on FirebaseAuthException catch (e) {
+                if (e.code == 'wrong-password') print("Password is worng");
+              }
+            },
+            child: const Text("Login"),
+          ),
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/register/', (route) => false); // const RegisterView();
+              },
+              child: const Text("New User ? Register here."))
+        ],
+      ),
     );
   }
 }
