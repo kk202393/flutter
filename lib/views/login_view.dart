@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firstflutterapp/main.dart';
-import 'package:firstflutterapp/views/register_view.dart';
+// import 'package:firstflutterapp/main.dart';
+// import 'package:firstflutterapp/views/register_view.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import '../firebase_options.dart';
+import 'dart:developer' as devtools show log;
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -60,8 +61,14 @@ class _LoginViewState extends State<LoginView> {
                 final user = await FirebaseAuth.instance
                     .signInWithEmailAndPassword(
                         email: email, password: password);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/NotesView/',
+                  (route) => false,
+                );
+                devtools.log(user.toString());
               } on FirebaseAuthException catch (e) {
-                if (e.code == 'wrong-password') print("Password is worng");
+                if (e.code == 'wrong-password')
+                  devtools.log("Password is worng");
               }
             },
             child: const Text("Login"),
