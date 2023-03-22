@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/routes.dart';
 import '../firebase_options.dart';
 
 class RegisterView extends StatefulWidget {
@@ -75,7 +76,7 @@ class _RegisterViewState extends State<RegisterView> {
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                            '/login/', (route) => false);
+                            loginRoute, (route) => false);
                       },
                       child: const Text("Already register? Login here!"))
                 ],

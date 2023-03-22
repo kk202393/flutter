@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 // import '../firebase_options.dart';
 import 'dart:developer' as devtools show log;
 
+import '../constants/routes.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
 
@@ -62,7 +64,7 @@ class _LoginViewState extends State<LoginView> {
                     .signInWithEmailAndPassword(
                         email: email, password: password);
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/NotesView/',
+                  notesRoute,
                   (route) => false,
                 );
                 devtools.log(user.toString());
@@ -76,7 +78,7 @@ class _LoginViewState extends State<LoginView> {
           TextButton(
               onPressed: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/register/', (route) => false); // const RegisterView();
+                    registerRoute, (route) => false); // const RegisterView();
               },
               child: const Text("New User ? Register here."))
         ],
