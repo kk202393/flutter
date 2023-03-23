@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firstflutterapp/constants/routes.dart';
 import 'package:flutter/material.dart';
 
 class VerifyEmail extends StatelessWidget {
@@ -22,6 +23,14 @@ class VerifyEmail extends StatelessWidget {
                 final user = FirebaseAuth.instance.currentUser;
                 await user?.sendEmailVerification();
               },
+            ),
+            TextButton(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(loginRoute, (route) => false);
+              },
+              child: const Text("Reset"),
             )
           ],
         ),
